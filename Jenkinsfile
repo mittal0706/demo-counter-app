@@ -20,9 +20,12 @@ pipeline{
             }
         }
             stage('Integration Testing'){
+                agent {
+                    docker { image 'maven' }
+                }
                 steps{
                     script{ 
-                        sh 'mvn verify -DskipUnitTests'
+                    sh 'mvn verify -DskipUnitTests'
                     }
                 }
             }
